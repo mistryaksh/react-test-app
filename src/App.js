@@ -11,9 +11,11 @@ function App() {
 
   const GettingRequest = async (kioskData) => {
     try {
-      console.log(kioskData.kioskData)
+      console.log(kioskData)
       const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
+        withCredentials: true,
         headers: {
+
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
         },
@@ -32,12 +34,15 @@ function App() {
       const postRequest = await axios.post(`http://swayamhealth.info/api/organisation/orglogin`, {
         email: emailData,
         password: pinData
-      }, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-        }
-      })
+      },
+        {
+          withCredentials: true,
+
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+          }
+        })
       console.log("POST DATA", postRequest.data.data.org)
     } catch (err) {
       if (err.response) {
@@ -48,7 +53,7 @@ function App() {
   }
 
   const handleGetData = () => {
-    GettingRequest({ kioskData: kioskId })
+    GettingRequest(kioskId)
   }
   const handlePostRequest = () => {
     PostingRequest(email, pin)
