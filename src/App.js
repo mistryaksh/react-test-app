@@ -9,7 +9,7 @@ function App() {
       const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/MUMSAN2`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
         }
       })
       console.log("GET DATA", getRequest.data.data.result)
@@ -28,7 +28,7 @@ function App() {
       }, {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
         }
       })
       console.log("POST DATA", postRequest.data.data.org)
