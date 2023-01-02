@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
-
 function App() {
   const [kioskId, setKioskId] = useState('')
   const [data, setData] = useState()
@@ -13,25 +12,24 @@ function App() {
   const GettingRequest = async (kioskData) => {
     try {
       console.log(kioskData.kioskData)
-      const getRequest = await axios.get(`swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
+      const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTION',
-        }
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+        },
       })
-      console.log(kioskData)
-      setData(getRequest.data)
-      console.log("GET DATA", data.data.result)
+      setData(await getRequest.data.data.result)
+      console.log("GET DATA", data)
     } catch (err) {
       if (err.response) {
         console.log(err.response.data.message)
       }
-      console.log(err.message)
+      console.log(err)
     }
   }
   const PostingRequest = async (emailData, pinData) => {
     try {
-      const postRequest = await axios.post(`swayamhealth.info/api/organisation/orglogin`, {
+      const postRequest = await axios.post(`http://swayamhealth.info/api/organisation/orglogin`, {
         email: emailData,
         password: pinData
       }, {
