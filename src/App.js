@@ -20,8 +20,8 @@ function App() {
         }
       })
       console.log(kioskData)
-      setData(getRequest.data.result)
-      console.log("GET DATA", data)
+      setData(getRequest.data)
+      console.log("GET DATA", data.data.result)
     } catch (err) {
       if (err.response) {
         console.log(err.response.data.message)
