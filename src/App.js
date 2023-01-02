@@ -12,7 +12,7 @@ function App() {
   const GettingRequest = async (kioskData) => {
     try {
       console.log(kioskData)
-      const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
+      const getRequest = await axios.get(`http://43.204.35.128:5000/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
         withCredentials: true,
         headers: {
 
