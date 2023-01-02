@@ -13,7 +13,7 @@ function App() {
   const GettingRequest = async (kioskData) => {
     try {
       console.log(kioskData.kioskData)
-      const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
+      const getRequest = await axios.get(`swayamhealth.info/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTION',
@@ -31,7 +31,7 @@ function App() {
   }
   const PostingRequest = async (emailData, pinData) => {
     try {
-      const postRequest = await axios.post(`http://swayamhealth.info/api/organisation/orglogin`, {
+      const postRequest = await axios.post(`swayamhealth.info/api/organisation/orglogin`, {
         email: emailData,
         password: pinData
       }, {
