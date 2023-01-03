@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { GettingRequestAxios, GettingRequestFetch, PostingRequestAxios } from './utils';
+import { PostingRequestAxios } from './utils';
 
 function App() {
   const [kioskId, setKioskId] = useState('')
