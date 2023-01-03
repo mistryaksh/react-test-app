@@ -1,62 +1,31 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import { GettingRequestAxios, GettingRequestFetch, PostingRequestAxios } from './utils';
 
 function App() {
   const [kioskId, setKioskId] = useState('')
   const [data, setData] = useState()
-  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
 
-
-  const GettingRequest = async (kioskData) => {
-    try {
-      console.log(kioskData)
-      const getRequest = await axios.get(`http://43.204.35.128:5000/api/category/gettestfromkiosk/${kioskData.kioskData}`, {
-        withCredentials: true,
-        headers: {
-
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-        },
+  const handleGetData = async () => {
+    const apiData = await fetch(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskId}`)
+      .then(async (response) => {
+        const filter = await response.json()
+        console.log(filter.data.result)
       })
-      setData(await getRequest.data.data.result)
-      console.log("GET DATA", data)
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data.message)
-      }
-      console.log(err)
-    }
+      .then((data) => setData(data))
+      .catch(err => {
+        console.log(err)
+      });
+    console.log(apiData)
+    return apiData
   }
-  const PostingRequest = async (emailData, pinData) => {
-    try {
-      const postRequest = await axios.post(`http://swayamhealth.info/api/organisation/orglogin`, {
-        email: emailData,
-        password: pinData
-      },
-        {
-          withCredentials: true,
-
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-          }
-        })
-      console.log("POST DATA", postRequest.data.data.org)
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data.message)
-      }
-      console.log(err.message)
-    }
-  }
-
-  const handleGetData = () => {
-    GettingRequest(kioskId)
-  }
-  const handlePostRequest = () => {
-    PostingRequest(email, pin)
+  const handlePostRequest = async () => {
+    setData(await PostingRequestAxios(phone, pin)
+    )
+    console.log('POST_DATA', data)
+    setPhone('')
   }
 
   return (
@@ -72,7 +41,7 @@ function App() {
             e.preventDefault()
             handleGetData()
           }}>
-            <input type="kioskId" name="kioskId" value={kioskId} onChange={e => setKioskId(e.target.value)} />
+            <input placeholder='Kiosk ID' type="kioskId" name="kioskId" value={kioskId} onChange={e => setKioskId(e.target.value)} />
             <button type="submit" >Call get request</button>
           </form>
         </div>
@@ -81,9 +50,9 @@ function App() {
         <div style={{ display: "flex", width: "100%" }}>
           <form onSubmit={e => {
             e.preventDefault()
-            handlePostRequest(email, pin)
+            handlePostRequest(phone, pin)
           }}>
-            <input placeholder='Email' type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input placeholder='Phone' type="number" name="number" value={phone} onChange={(e) => setPhone(e.target.value)} />
             <br />
             <input placeholder='Your pin' type="password" name="pin" value={pin} onChange={(e) => setPin(e.target.value)} />
             <br />
