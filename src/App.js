@@ -14,9 +14,9 @@ function App() {
     // send the request
     xhr.send()
     xhr.addEventListener('load', async () => {
-      const data = xhr.responseText
+      const data = JSON.parse(xhr.responseText)
       // update the state of the component with the result here
-      console.log(JSON.parse(data))
+      console.log(data.data.result)
     })
   }
 
