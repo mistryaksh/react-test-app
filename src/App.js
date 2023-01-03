@@ -7,20 +7,19 @@ function App() {
   const [data, setData] = useState()
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
+  const xhr = new XMLHttpRequest()
 
   const handleGetData = async () => {
-    const apiData = await fetch(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskId}`)
-      .then(async (response) => {
-        const filter = await response.json()
-        console.log(filter.data.result)
-      })
-      .then((data) => setData(data))
-      .catch(err => {
-        console.log(err)
-      });
-    console.log(apiData)
-    return apiData
+    xhr.open('GET', `http://swayamhealth.info/api/category/gettestfromkiosk/${kioskId}`)
+    // send the request
+    xhr.send()
+    xhr.addEventListener('load', async () => {
+      const data = xhr.responseText
+      // update the state of the component with the result here
+      console.log(JSON.parse(data))
+    })
   }
+
   const handlePostRequest = async () => {
     setData(await PostingRequestAxios(phone, pin)
     )
