@@ -56,7 +56,7 @@ function App() {
             e.preventDefault()
             handlePostRequest(phone, pin)
           }}>
-            <input placeholder='Phone' type="number" name="number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input placeholder='Phone' type="email" name="number" value={phone} onChange={(e) => setPhone(e.target.value)} />
             <br />
             <input placeholder='Your pin' type="password" name="pin" value={pin} onChange={(e) => setPin(e.target.value)} />
             <br />

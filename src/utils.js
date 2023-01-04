@@ -6,10 +6,12 @@ const HeaderOptions = {
      'Access-Control-Allow-Headers': '*'
 }
 
+const BackendUrl = `http://swayamhealth.info/api`
+
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(HeaderOptions)
-          const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData}`, {
+          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
                withCredentials: true,
                headers: HeaderOptions,
           })
@@ -23,17 +25,15 @@ const GettingRequestAxios = async (kioskData) => {
 }
 const PostingRequestAxios = async (emailData, pinData) => {
      try {
-          const postRequest = await axios.post(`http://swayamhealth.info/api/organisation/orglogin`, {
+          const postRequest = await axios.post(`${BackendUrl}/organisation/orglogin`, {
                email: emailData,
                password: pinData
           },
                {
                     withCredentials: true,
-                    headers: {
-                         'Access-Control-Allow-Origin': '*',
-                         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-                    }
+                    headers: HeaderOptions
                })
+          console.log(postRequest.data)
           return postRequest.data.data.org
      } catch (err) {
           if (err.response) {
