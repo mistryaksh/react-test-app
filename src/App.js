@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 import './App.css';
-import { PostingRequestAxios } from './utils';
+import { GettingRequestAxios, PostingRequestAxios } from './utils';
 
 function App() {
   const [kioskId, setKioskId] = useState('')
   const [data, setData] = useState()
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
-  const xhr = new XMLHttpRequest()
 
-  const handleGetData = async () => {
-    xhr.open('GET', `http://swayamhealth.info/api/category/gettestfromkiosk/${kioskId}`)
-    // send the request
-    xhr.send()
-    xhr.addEventListener('load', async () => {
-      const data = JSON.parse(xhr.responseText)
-      // update the state of the component with the result here
-      console.log(data.data.result)
-    })
-  }
 
   const handlePostRequest = async () => {
     setData(await PostingRequestAxios(phone, pin)
     )
     console.log('POST_DATA', data)
     setPhone('')
+  }
+  const handleGetData = async () => {
+
+
+    // Using fetch request
+    try {
+      const yourData = await GettingRequestAxios(kioskId)
+      console.log(yourData)
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data.message)
+      } else {
+        console.log(err.message)
+      }
+    }
+
   }
 
   return (

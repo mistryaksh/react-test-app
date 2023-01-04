@@ -1,13 +1,16 @@
 import axios from "axios"
 
+const HeaderOptions = {
+     'Access-Control-Allow-Origin': '*',
+     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTION',
+     'content-type': "application/json"
+}
+
 const GettingRequestAxios = async (kioskData) => {
      try {
           const getRequest = await axios.get(`http://swayamhealth.info/api/category/gettestfromkiosk/${kioskData}`, {
                withCredentials: true,
-               headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTION',
-               },
+               headers: HeaderOptions,
           })
           return await getRequest.data.data.result
      } catch (err) {
