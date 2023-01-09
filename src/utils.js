@@ -2,7 +2,7 @@ import axios from "axios"
 
 const HeaderOptions = {
      'Access-Control-Allow-Origin': '*',
-     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+     'Access-Control-Allow-Methods': '*',
      'Access-Control-Allow-Headers': '*'
 }
 
