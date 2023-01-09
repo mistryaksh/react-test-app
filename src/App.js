@@ -8,15 +8,13 @@ function App() {
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
 
-
   const handlePostRequest = async () => {
-    setData(await PostingRequestAxios(phone, pin)
-    )
+    const YourData = await PostingRequestAxios(phone, pin)
+    setData(YourData)
     console.log('POST_DATA', data)
     setPhone('')
   }
   const handleGetData = async () => {
-
 
     // Using fetch request
     try {

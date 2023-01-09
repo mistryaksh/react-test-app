@@ -6,15 +6,15 @@ const HeaderOptions = {
      'Access-Control-Allow-Headers': '*'
 }
 
-const BackendUrl = `http://swayamhealth.info/api`
+const BackendUrl = `https://swayamhealth.info/api`
 
 const GettingRequestAxios = async (kioskData) => {
      try {
-          console.log(HeaderOptions)
-          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
-               withCredentials: true,
-               headers: HeaderOptions,
-          })
+          console.log(BackendUrl)
+          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
+               {
+                    headers: HeaderOptions
+               })
           return await getRequest.data.data.result
      } catch (err) {
           if (err.response) {
@@ -30,7 +30,6 @@ const PostingRequestAxios = async (emailData, pinData) => {
                password: pinData
           },
                {
-                    withCredentials: true,
                     headers: HeaderOptions
                })
           console.log(postRequest.data)
