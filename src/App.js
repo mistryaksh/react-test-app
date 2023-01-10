@@ -21,8 +21,9 @@ function App() {
 
 
     await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, {
-
-      headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
+      method: "GET",
+      // credentials: "same-origin",
+      // headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Accept": "application/json`" },
     })
       .then(async (response) => await response.json())
       .then(async (records) => {
