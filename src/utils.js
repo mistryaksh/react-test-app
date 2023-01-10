@@ -8,8 +8,8 @@ export const HeaderOptions = {
      'Content-Type': 'application/json',
 }
 
-// const BackendUrl = `https://swayamhealth.info/api`
-const BackendUrl = "http://43.204.35.128:5000"
+const BackendUrl = `https://swayamhealth.info/api`
+// const BackendUrl = "http://43.204.35.128:5000"
 
 
 const GettingRequestAxios = async (kioskData) => {
