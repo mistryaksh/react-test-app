@@ -14,7 +14,7 @@ const GettingRequestAxios = async (kioskData) => {
           //           headers: HeaderOptions
           //      })
           // return await getRequest.data.data.result
-          const data = await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "cors" })
+          const data = await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" })
           console.log(await data.json())
 
      } catch (err) {
