@@ -17,16 +17,18 @@ function App() {
   const handleGetData = async () => {
 
     // Using fetch request
-    try {
-      const yourData = await GettingRequestAxios(kioskId)
-      console.log("GOT THE DATA", yourData)
-    } catch (err) {
+
+    const yourData = await GettingRequestAxios(kioskId).then(res => res.data).catch(err => {
       if (err.response) {
-        console.log("SERVER ERROR", err.response.data.message)
+        console.log(err.response.data)
+        return err.response.data
       } else {
-        console.log("NORMAL ERROR", err.message)
+        console.log(err)
+        return err
       }
-    }
+    })
+    console.log("GOT THE DATA", yourData)
+
 
   }
 
