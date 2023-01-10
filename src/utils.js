@@ -1,7 +1,8 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     "Access-Control-Allow-Origin": "*"
+     'Access-Control-Allow-Origin': '*',
+     'Content-Type': 'application/json',
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
@@ -9,17 +10,16 @@ const BackendUrl = `https://swayamhealth.info/api`
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
-          // const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
-          //      {
-          //           headers: HeaderOptions
-          //      })
-          // return await getRequest.data.data.result
-          await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" }).then(res => { return res })
+          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
+               {
+                    headers: HeaderOptions
+               })
+          return await getRequest.data.data.result
      } catch (err) {
           if (err.response) {
-               console.log("SERVER ERROR", err.response.data.message)
+               console.log(err.response.data.message)
           }
-          console.log("NORMAL ERROR", err)
+          console.log(err)
      }
 }
 const PostingRequestAxios = async (emailData, pinData) => {
