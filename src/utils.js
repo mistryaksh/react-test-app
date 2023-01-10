@@ -9,11 +9,13 @@ const BackendUrl = `https://swayamhealth.info/api`
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
-          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
-               {
-                    headers: HeaderOptions
-               })
-          return await getRequest.data.data.result
+          // const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
+          //      {
+          //           headers: HeaderOptions
+          //      })
+          // return await getRequest.data.data.result
+          const data = await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "cors" })
+          console.log(await data.json())
 
      } catch (err) {
           if (err.response) {
