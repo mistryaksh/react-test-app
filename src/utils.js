@@ -12,6 +12,10 @@ const BackendUrl = `https://swayamhealth.info/api`
 // const BackendUrl = "http://43.204.35.128:5000"
 
 
+axios.defaults.baseURL = BackendUrl;
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = "*";
+
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
