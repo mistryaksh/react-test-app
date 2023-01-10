@@ -7,6 +7,10 @@ function App() {
   const [data, setData] = useState()
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
+  const [apiData, setApiData] = useState([])
+
+  const BackendUrl = `https://swayamhealth.info/api`
+
 
   const handlePostRequest = async () => {
     const YourData = await PostingRequestAxios(phone, pin)
@@ -17,16 +21,13 @@ function App() {
   const handleGetData = async () => {
 
     // Using fetch request
-    try {
-      const yourData = await GettingRequestAxios(kioskId)
-      console.log(yourData)
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data.message)
-      } else {
-        console.log(err.message)
-      }
-    }
+
+    fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`)
+      .then(response => response.json())
+      .then(records => {
+        console.log(records.data.result)
+      })
+      .catch(error => console.log(error))
 
   }
 

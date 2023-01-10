@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useState } from "react"
 
 export const HeaderOptions = {
      "Access-Control-Allow-Origin": "*"
@@ -14,11 +15,7 @@ const GettingRequestAxios = async (kioskData) => {
           //           headers: HeaderOptions
           //      })
           // return await getRequest.data.data.result
-          await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" }).then(async (res) => {
-               return res.json()
-          }).then(data => console.log("GOT YOUR DATA", data)).catch(err => console.log("GOT THE ERROR", err))
-
-
+          await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" }).then(res => { return res })
      } catch (err) {
           if (err.response) {
                console.log("SERVER ERROR", err.response.data.message)
