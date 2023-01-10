@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { GettingRequestAxios, PostingRequestAxios } from './utils';
+import { PostingRequestAxios } from './utils';
 
 function App() {
   const [kioskId, setKioskId] = useState('')
   const [data, setData] = useState()
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
-  const [apiData, setApiData] = useState([])
 
   const BackendUrl = `https://swayamhealth.info/api`
 
