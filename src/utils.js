@@ -23,7 +23,14 @@ const GettingRequestAxios = async (kioskData) => {
           const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
                withCredentials: false,
                validateStatus: () => true,
-               headers: HeaderOptions
+               headers: {
+                    'Access-Control-Allow-Origin': 'ORIGIN',
+                    'Access-Control-Allow-Credentials': true,
+                    'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': '*',
+                    // 'Content-Type': 'application/json',
+                    "origin": "https://react-test-app-1.netlify.app/"
+               }
           })
           return await getRequest.data
      } catch (err) {
