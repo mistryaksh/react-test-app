@@ -11,12 +11,6 @@ export const HeaderOptions = {
 
 const BackendUrl = `https://swayamhealth.info/api`
 // const BackendUrl = "http://43.204.35.128:5000"
-
-
-axios.defaults.baseURL = BackendUrl;
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = "*";
-
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
@@ -32,6 +26,7 @@ const GettingRequestAxios = async (kioskData) => {
                     "origin": "https://react-test-app-1.netlify.app/"
                }
           })
+          console.log("YOUR HEADERS", getRequest.headers)
           return await getRequest.data
      } catch (err) {
           if (err.response) {
