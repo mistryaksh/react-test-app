@@ -20,7 +20,7 @@ function App() {
     // Using fetch request
 
 
-    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, { mode: "cors", method: "GET" })
+    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, { mode: "no-cors", method: "GET" })
       .then(async (response) => await response.json())
       .then(async (records) => {
         console.log(await records.data.result)
