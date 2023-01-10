@@ -1,11 +1,10 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     'Access-Control-Allow-Origin': '*',
-     'Access-Control-Allow-Credentials': 'true',
-     'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
-     'Access-Control-Allow-Headers': '*',
-     'Content-Type': 'application/json',
+     "origin": "*",
+     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+     "preflightContinue": false,
+     "optionsSuccessStatus": 204
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
