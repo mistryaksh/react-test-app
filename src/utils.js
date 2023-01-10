@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const HeaderOptions = {
      'Access-Control-Allow-Origin': '*',
-     'Access-Control-Allow-Credentials': 'true',
+     'Access-Control-Allow-Credentials': true,
      'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
      'Access-Control-Allow-Headers': '*',
      'Content-Type': 'application/json',
