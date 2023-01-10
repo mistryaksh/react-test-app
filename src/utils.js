@@ -12,28 +12,23 @@ export const HeaderOptions = {
 const BackendUrl = `https://swayamhealth.info/api`
 // const BackendUrl = "http://43.204.35.128:5000"
 const GettingRequestAxios = async (kioskData) => {
-     try {
-          console.log(BackendUrl)
-          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
-               withCredentials: false,
-               validateStatus: () => true,
-               headers: {
-                    'Access-Control-Allow-Origin': 'ORIGIN',
-                    'Access-Control-Allow-Credentials': true,
-                    'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': '*',
-                    // 'Content-Type': 'application/json',
-                    "origin": "https://react-test-app-1.netlify.app/"
-               }
-          })
-          console.log("YOUR HEADERS", getRequest.headers)
-          return await getRequest.data
-     } catch (err) {
-          if (err.response) {
-               console.log("SERVER ERROR", err.response.data.message)
+
+     console.log(BackendUrl)
+     const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
+          withCredentials: false,
+          validateStatus: () => true,
+          headers: {
+               'Access-Control-Allow-Origin': 'ORIGIN',
+               'Access-Control-Allow-Credentials': true,
+               'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
+               'Access-Control-Allow-Headers': '*',
+               // 'Content-Type': 'application/json',
+               "origin": "https://react-test-app-1.netlify.app/"
           }
-          console.log("NORMAL ERROR", err)
-     }
+     })
+     console.log("YOUR HEADERS", getRequest.headers)
+     return await getRequest.data
+
 }
 const PostingRequestAxios = async (emailData, pinData) => {
      try {
