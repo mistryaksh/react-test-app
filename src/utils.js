@@ -20,7 +20,8 @@ const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
           const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
-               withCredentials: false
+               withCredentials: false,
+               validateStatus: true
           })
           return await getRequest.data
      } catch (err) {
