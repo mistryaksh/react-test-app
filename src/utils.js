@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-
+     "Access-Control-Allow-Origin": "https://react-test-app-1.netlify.app/"
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
