@@ -21,7 +21,7 @@ const GettingRequestAxios = async (kioskData) => {
           console.log(BackendUrl)
           const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
                withCredentials: false,
-               validateStatus: true,
+               validateStatus: () => true,
                headers: HeaderOptions
           })
           return await getRequest.data
