@@ -6,6 +6,7 @@ export const HeaderOptions = {
      'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
      'Access-Control-Allow-Headers': '*',
      'Content-Type': 'application/json',
+     "origin": "https://react-test-app-1.netlify.app/"
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
