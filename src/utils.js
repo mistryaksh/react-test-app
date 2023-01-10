@@ -14,8 +14,8 @@ const GettingRequestAxios = async (kioskData) => {
           //           headers: HeaderOptions
           //      })
           // return await getRequest.data.data.result
-          await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" }).then(res => {
-               console.log(res.json())
+          await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, { mode: "no-cors" }).then(async (res) => {
+               console.log(await res.json())
           }).catch(err => console.log("GOT THE ERROR", err))
 
 
