@@ -18,18 +18,9 @@ function App() {
 
     // Using fetch request
 
-    const yourData = await GettingRequestAxios(kioskId).then(res => {
-      return res.data
-    }).catch(err => {
-      if (err.response) {
-        return err.response.data
-      } else {
-        return err
-      }
-    })
+    const yourData = await GettingRequestAxios(kioskId)
     console.log("GOT THE DATA", yourData)
-
-
+    return yourData
   }
 
   return (

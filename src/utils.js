@@ -12,22 +12,21 @@ export const HeaderOptions = {
 const BackendUrl = `https://swayamhealth.info/api`
 // const BackendUrl = "http://43.204.35.128:5000"
 const GettingRequestAxios = async (kioskData) => {
-
      console.log(BackendUrl)
+     var request = new XMLHttpRequest();
+     request.onreadystatechange = function () {
+          if (request.readyState == 4 && request.status == 200) {
+               const response = JSON.parse(request.response)
+               // console.log("your data", JSON.parse(request.response))
+               console.log("YOUR DATA", response.data.result)
+          }
+     };
+     request.open('GET', `${BackendUrl}/category/gettestfromkiosk/${kioskData}`, true);
+     return request.send();
 
-
-     const xhr = new XMLHttpRequest()
-     const url = `${BackendUrl}/category/gettestfromkiosk/${kioskData}`
-
-     xhr.open('GET', url)
-     xhr.onreadystatechange = (res) => {
-          console.log("XHR REQUEST", res)
-     }
-
-     const mainData = xhr.send()
-     console.log("got the data", mainData)
 
 }
+
 const PostingRequestAxios = async (emailData, pinData) => {
      try {
           const postRequest = await axios.post(`${BackendUrl}/organisation/orglogin`, {
