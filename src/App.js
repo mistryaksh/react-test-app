@@ -20,7 +20,10 @@ function App() {
     // Using fetch request
 
 
-    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`)
+    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, {
+
+      headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
+    })
       .then(async (response) => await response.json())
       .then(async (records) => {
         console.log(await records.data.result)
