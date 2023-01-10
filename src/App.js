@@ -21,7 +21,7 @@ function App() {
 
 
     await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, {
-      crossDomain: true, method: "GET",
+      crossDomain: false, method: "GET",
       headers: { 'Content-Type': 'application/json' },
     })
       .then(async (response) => await response.json())
