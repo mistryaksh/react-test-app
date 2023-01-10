@@ -16,9 +16,7 @@ const GettingRequestAxios = async (kioskData) => {
           const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
                {
                     responseType: "json",
-                    validateStatus: (status) => {
-                         return status >= 200 && status < 300
-                    },
+                    validateStatus: (status) => true,
                     headers: HeaderOptions
                })
           return await getRequest.data.data.result
