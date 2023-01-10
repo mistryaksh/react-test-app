@@ -21,7 +21,7 @@ function App() {
 
     // Using fetch request
 
-    fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`)
+    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`)
       .then(response => response.json())
       .then(records => {
         console.log(records.data.result)
