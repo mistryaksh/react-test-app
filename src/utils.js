@@ -19,12 +19,7 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = "*";
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
-          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
-               {
-                    responseType: "json",
-                    validateStatus: (status) => true,
-                    headers: HeaderOptions
-               })
+          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`)
           return await getRequest.data.data.result
      } catch (err) {
           if (err.response) {
