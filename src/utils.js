@@ -18,12 +18,10 @@ const GettingRequestAxios = async (kioskData) => {
           withCredentials: false,
           validateStatus: () => true,
           headers: {
-               'Access-Control-Allow-Origin': 'ORIGIN',
-               'Access-Control-Allow-Credentials': true,
-               'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
-               'Access-Control-Allow-Headers': '*',
-               // 'Content-Type': 'application/json',
-               "origin": "https://react-test-app-1.netlify.app/"
+               'Access-Control-Allow-Origin': '*',
+               'Content-Type': 'application/json',
+               withCredentials: true,
+               mode: 'no-cors',
           }
      })
      console.log("YOUR HEADERS", getRequest.headers)
