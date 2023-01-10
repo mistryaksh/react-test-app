@@ -2,13 +2,28 @@ import axios from "axios"
 
 export const HeaderOptions = {
      'Access-Control-Allow-Origin': '*',
+     'Access-Control-Allow-Credentials': 'true',
+     'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
+     'Access-Control-Allow-Headers': '*',
      'Content-Type': 'application/json',
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
 
 const GettingRequestAxios = async (kioskData) => {
-
+     try {
+          console.log(BackendUrl)
+          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
+               {
+                    headers: HeaderOptions
+               })
+          return await getRequest.data.data.result
+     } catch (err) {
+          if (err.response) {
+               console.log(err.response.data.message)
+          }
+          console.log(err)
+     }
 }
 const PostingRequestAxios = async (emailData, pinData) => {
      try {

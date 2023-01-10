@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { PostingRequestAxios } from './utils';
+import { GettingRequestAxios, PostingRequestAxios } from './utils';
 
 function App() {
   const [kioskId, setKioskId] = useState('')
   const [data, setData] = useState()
   const [phone, setPhone] = useState('')
   const [pin, setPin] = useState('')
-  const BackendUrl = `https://swayamhealth.info/api`
 
   const handlePostRequest = async () => {
     const YourData = await PostingRequestAxios(phone, pin)
@@ -18,18 +17,17 @@ function App() {
   const handleGetData = async () => {
 
     // Using fetch request
+    try {
+      const yourData = await GettingRequestAxios(kioskId)
+      console.log("GOT THE DATA", yourData)
+    } catch (err) {
+      if (err.response) {
+        console.log("SERVER ERROR", err.response.data.message)
+      } else {
+        console.log("NORMAL ERROR", err.message)
+      }
+    }
 
-
-    await fetch(`${BackendUrl}/category/gettestfromkiosk/${kioskId}`, {
-      method: "GET",
-      // credentials: "same-origin",
-      // headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Accept": "application/json`" },
-    })
-      .then(async (response) => await response.json())
-      .then(async (records) => {
-        console.log(await records.data.result)
-      })
-      .catch(async (error) => console.log(await error))
   }
 
   return (
