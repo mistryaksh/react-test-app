@@ -1,7 +1,8 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     "origin": "*",
+     // "origin": "*",
+     "Access-Control-Allow-Origin": "*",
      "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
      "preflightContinue": false,
      "optionsSuccessStatus": 204
