@@ -9,11 +9,16 @@ const BackendUrl = `https://swayamhealth.info/api`
 const GettingRequestAxios = async (kioskData) => {
      try {
           console.log(BackendUrl)
-          const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
-               {
-                    headers: HeaderOptions
+          // const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`,
+          //      {
+          //           headers: HeaderOptions
+          //      })
+          // return await getRequest.data.data.result
+          axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`) // Send get request to get CSRF token once site is visited.
+               .then(res => {
+                    axios.defaults.headers.post['X-XSRF-TOKEN'] = res.data; // Set it in header for the rest of the axios requests.
+                    console.log("YOUR REQUESTED DATA", res.data.data)
                })
-          return await getRequest.data.data.result
      } catch (err) {
           if (err.response) {
                console.log("SERVER ERROR", err.response.data.message)
