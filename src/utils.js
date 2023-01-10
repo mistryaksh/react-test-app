@@ -22,7 +22,7 @@ const GettingRequestAxios = async (kioskData) => {
           const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
                withCredentials: false
           })
-          return await getRequest.data.data.result
+          return await getRequest.data
      } catch (err) {
           if (err.response) {
                console.log(err.response.data.message)
