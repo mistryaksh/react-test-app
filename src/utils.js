@@ -1,10 +1,10 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     'Access-Control-Allow-Origin': '*',
+     'Access-Control-Allow-Origin': 'ORIGIN',
      'Access-Control-Allow-Credentials': true,
      'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS',
-     'Access-Control-Allow-Headers': '*',
+     ' Access-Control-Allow-Headers': 'include',
      'Content-Type': 'application/json',
      "origin": "https://react-test-app-1.netlify.app/"
 }
