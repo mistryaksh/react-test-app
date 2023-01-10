@@ -1,11 +1,9 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     // "origin": "*",
-     "Access-Control-Allow-Origin": "*",
-     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-     "preflightContinue": false,
-     "optionsSuccessStatus": 204
+     "Access-Control-Request-Method": "GET,POST,PUT,OPTIONS,DELETE,HEAD",
+     "Access-Control-Request-Headers": "Content-Type, x-requested-with",
+     "Origin": "https://react-test-app-1.netlify.app"
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
