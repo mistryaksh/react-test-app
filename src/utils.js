@@ -3,6 +3,7 @@ import axios from "axios"
 export const HeaderOptions = {
      "Access-Control-Request-Method": "GET,POST,PUT,OPTIONS,DELETE,HEAD",
      "Access-Control-Request-Headers": "Content-Type, x-requested-with",
+     "Access-Control-Allow-Origin": "*",
      "Origin": "https://react-test-app-1.netlify.app"
 }
 
