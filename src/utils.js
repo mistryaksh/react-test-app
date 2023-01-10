@@ -26,9 +26,9 @@ const GettingRequestAxios = async (kioskData) => {
           return await getRequest.data
      } catch (err) {
           if (err.response) {
-               console.log(err.response.data.message)
+               console.log("SERVER ERROR", err.response.data.message)
           }
-          console.log(err)
+          console.log("NORMAL ERROR", err)
      }
 }
 const PostingRequestAxios = async (emailData, pinData) => {
