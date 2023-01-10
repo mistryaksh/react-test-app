@@ -1,7 +1,8 @@
 import axios from "axios"
 
 export const HeaderOptions = {
-     "Access-Control-Allow-Origin": "http://localhost:3000"
+     "Access-Control-Allow-Origin": "http://localhost:3000",
+     "withCredentials": false
 }
 
 const BackendUrl = `https://swayamhealth.info/api`
