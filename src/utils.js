@@ -14,18 +14,29 @@ const BackendUrl = `https://swayamhealth.info/api`
 const GettingRequestAxios = async (kioskData) => {
 
      console.log(BackendUrl)
-     const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
-          withCredentials: false,
-          validateStatus: () => true,
-          headers: {
-               'Access-Control-Allow-Origin': '*',
-               'Content-Type': 'application/json',
-               withCredentials: true,
-               mode: 'no-cors',
-          }
-     })
-     console.log("YOUR HEADERS", getRequest.headers)
-     return await getRequest.data
+     // const getRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/${kioskData}`, {
+     //      withCredentials: false,
+     //      validateStatus: () => true,
+     //      headers: {
+     //           'Access-Control-Allow-Origin': '*',
+     //           'Content-Type': 'application/json',
+     //           withCredentials: true,
+     //           mode: 'no-cors',
+     //      }
+     // })
+     // console.log("YOUR HEADERS", getRequest.headers)
+     // return await getRequest.data
+
+     const xhr = new XMLHttpRequest()
+     const url = `${BackendUrl}/category/gettestfromkiosk/${kioskData}`
+
+     xhr.open('GET', url)
+     xhr.onreadystatechange = (res) => {
+          console.log("XHR REQUEST", res)
+     }
+
+     const mainData = xhr.send()
+     console.log("got the data", mainData)
 
 }
 const PostingRequestAxios = async (emailData, pinData) => {
