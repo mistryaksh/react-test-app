@@ -18,7 +18,7 @@ header.append('Access-Control-Allow-Origin', '*');
 
 const GettingRequestAxios = async (kioskData) => {
      console.log(BackendUrl)
-     const postRequest = await axios.get(`${BackendUrl}/organisation/${kioskData}`,
+     const postRequest = await axios.get(`${BackendUrl}/category/gettestfromkiosk/DELSAN2`,
           {
                headers: header
           })
