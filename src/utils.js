@@ -12,18 +12,18 @@ export const HeaderOptions = {
 const BackendUrl = `https://swayamhealth.info/api`
 // const BackendUrl = "http://43.204.35.128:5000"
 
+const header = new Headers();
+header.append('Access-Control-Allow-Origin', '*');
+
+
 const GettingRequestAxios = async (kioskData) => {
      console.log(BackendUrl)
-     var request = new XMLHttpRequest();
-     request.onreadystatechange = function () {
-          if (request.readyState === 4 && request.status === 200) {
-               const response = JSON.parse(request.response)
-               // console.log("your data", JSON.parse(request.response))
-               console.log("YOUR DATA", response.data.result)
-          }
-     };
-     request.open('GET', `${BackendUrl}/category/gettestfromkiosk/${kioskData}`, true);
-     return request.send();
+     const postRequest = await axios.get(`${BackendUrl}/organisation/${kioskData}`,
+          {
+               headers: header
+          })
+     console.log(postRequest.data)
+     return postRequest.data.data.org
 
 
 }
