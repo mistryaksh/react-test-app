@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// export const HeaderOptions = {
-//      "Access-Control-Allow-Origin": "*",
-//      "Access-Control-Allow-Credentials": "true",
-//      "Access-Control-Allow-Methods": "PUT, GET, HEAD, POST, DELETE, OPTIONS",
-//      "Access-Control-Allow-Headers": "*",
-//      "Content-Type": "application/json",
-// };
+export const HeaderOptions = {
+     "Access-Control-Allow-Origin": "*",
+     "Access-Control-Allow-Credentials": "true",
+     "Access-Control-Allow-Methods": "PUT, GET, HEAD, POST, DELETE, OPTIONS",
+     "Access-Control-Allow-Headers": "*",
+     "Content-Type": "application/json",
+};
 
 const BackendUrl = `https://swayamhealth.info/api`;
 // const BackendUrl = "http://43.204.35.128:5000"
